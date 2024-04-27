@@ -20,4 +20,7 @@ router.route("/users/:id")
 router.route("/login")
 .post((req, res) => userController.login(req, res));
 
+router.route("/logout")
+.get((req, res) => userController.logout(req, res));
+
 module.exports = router;

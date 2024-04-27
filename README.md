@@ -75,14 +75,18 @@
   
   ```json
   {
-    "email": "email@example.com",
+    "usuario": "Nome do Usuário",
     "senha": "senha_do_usuario"
   } 
   ```
   
 - **Resposta de Sucesso:** Status 200 - Login bem-sucedido.
 - **Resposta de Erro:** Status 400 - Usuário não encontrado ou senha inválida.
+### Logout de Usuário
 
+-   **Método:** GET
+-   **Endpoint:** `http://localhost:3000/api/logout`
+-   **Descrição:** Realiza o logout de um usuário autenticado.
 ## Rotas de Favoritos
 
 ### Adicionar Favorito

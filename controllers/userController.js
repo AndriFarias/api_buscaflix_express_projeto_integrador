@@ -1,28 +1,38 @@
 const userModel = require("../models/User")
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const saltRounds = 10;
 
 const userController = {
-    create: async(req,res) => {
+    create: async(req, res) => {
         try {
-            const user = {
-                usuario: req.body.usuario,
-                email: req.body.email,
+            const { usuario, email, senha } = req.body;
+    
+            // Verificar se o e-mail já está em uso
+            const existingEmailUser = await userModel.findOne({ email });
+            if (existingEmailUser) {
+                return res.status(400).json({ message: 'O e-mail já está em uso' });
             }
-
-            bcrypt.hash(req.body.senha, saltRounds, async function(err, hash) {
+    
+            // Verificar se o nome de usuário já está em uso
+            const existingUsernameUser = await userModel.findOne({ usuario });
+            if (existingUsernameUser) {
+                return res.status(400).json({ message: 'O nome de usuário já está em uso' });
+            }
+    
+            // Se o e-mail e o nome de usuário não estiverem em uso, criar um novo usuário
+            bcrypt.hash(senha, saltRounds, async function(err, hash) {
                 if (err) {
                     console.log(err);
                     return res.status(500).send('Erro ao fazer o hash da senha');
                 }
-
-                user.senha = hash;
-
-                const response = await userModel.create(user)
-                res.status(201).json({ response, msg:'Usuario criado com sucesso!'})
+    
+                const newUser = await userModel.create({ usuario, email, senha: hash });
+                res.status(201).json({ newUser, msg: 'Usuário criado com sucesso!' });
             });
         } catch (error) {
             console.log(error);
+            res.status(500).send('Erro no servidor');
         }
     },
     getAll: async (req, res)=>{
@@ -91,25 +101,31 @@ const userController = {
     },    
     login: async (req, res) => {
         try {
-            const { email, senha } = req.body;
-            const user = await userModel.findOne({ email });
-    
+            const { usuario, senha } = req.body;
+            const user = await userModel.findOne({ usuario });
+        
             if (!user) {
-                return res.status(400).send('Usuário não encontrado');
+              return res.status(400).send('Usuário não encontrado');
             }
-    
+        
             const isMatch = await bcrypt.compare(senha, user.senha);
-    
+        
             if (!isMatch) {
-                return res.status(400).send('Senha inválida');
+              return res.status(400).send('Senha inválida');
             }
-    
-            
-            res.status(200).json({ msg: 'Login bem-sucedido!', user: user.usuario });
-        } catch (error) {
+        
+            const token = jwt.sign({ userId: user._id }, 'buscaflix_projeto_integrador');
+        
+            res.status(200).json({ token, msg: 'Login bem-sucedido!', user: user.usuario });
+          } catch (error) {
             console.log(error);
-        }
-    },    
+            res.status(500).send('Erro no servidor');
+          }
+    },
+    logout: async (req, res) => {
+
+        res.status(200).send('Logout bem-sucedido');
+    },
 };
 
 module.exports = userController;
