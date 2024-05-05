@@ -116,7 +116,7 @@ const userController = {
         
             const token = jwt.sign({ userId: user._id }, 'buscaflix_projeto_integrador');
         
-            res.status(200).json({ token, msg: 'Login bem-sucedido!', user: user.usuario });
+            res.status(200).json({ token, msg: 'Login bem-sucedido!', user: user.usuario, id: user._id });
           } catch (error) {
             console.log(error);
             res.status(500).send('Erro no servidor');
