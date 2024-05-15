@@ -5,15 +5,15 @@ const { Schema } = mongoose
 const favoriteSchema = new Schema({
     idFilme: {
         type: Number,
-        require: true
+        
     },
     urlFoto: {
         type: String,
-        require: true
+        
     },
     title: {
         type: String,
-        require: true
+        
     },
     sources: {
         type: [String],

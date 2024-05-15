@@ -27,7 +27,7 @@
 ### Criação de Usuário
 
 - **Método:** POST
-- **Endpoint:** `http://localhost:3000/api/users`
+- **Endpoint:** `http://localhost:3001/api/users`
 - **Descrição:** Cria um novo usuário.
 - **Corpo da Requisição:**
   
@@ -45,31 +45,31 @@
 ### Listagem de Usuários
 
 - **Método:** GET
-- **Endpoint:** `http://localhost:3000/api/users`
+- **Endpoint:** `http://localhost:3001/api/users`
 - **Descrição:** Obtém todos os usuários cadastrados.
 
 ### Obter Usuário por ID
 
 - **Método:** GET
-- **Endpoint:** `http://localhost:3000/api/users/:id`
+- **Endpoint:** `http://localhost:3001/api/users/:id`
 - **Descrição:** Obtém um usuário específico pelo ID.
 
 ### Excluir Usuário
 
 - **Método:** DELETE
-- **Endpoint:** `http://localhost:3000/api/users/:id`
+- **Endpoint:** `http://localhost:3001/api/users/:id`
 - **Descrição:** Exclui um usuário específico pelo ID.
 
 ### Atualizar Usuário
 
 - **Método:** PUT
-- **Endpoint:** `http://localhost:3000/api/users/:id`
+- **Endpoint:** `http://localhost:3001/api/users/:id`
 - **Descrição:** Atualiza os dados de um usuário específico pelo ID.
 
 ### Login de Usuário
 
 - **Método:** POST
-- **Endpoint:** `http://localhost:3000/api/login`
+- **Endpoint:** `http://localhost:3001/api/login`
 - **Descrição:** Realiza o login de um usuário.
 - **Corpo da Requisição:**
   
@@ -85,14 +85,14 @@
 ### Logout de Usuário
 
 -   **Método:** GET
--   **Endpoint:** `http://localhost:3000/api/logout`
+-   **Endpoint:** `http://localhost:3001/api/logout`
 -   **Descrição:** Realiza o logout de um usuário autenticado.
 ## Rotas de Favoritos
 
 ### Adicionar Favorito
 
 - **Método:** POST
-- **Endpoint:** `http://localhost:3000/api/favorites`
+- **Endpoint:** `http://localhost:3001/api/favorites`
 - **Descrição:** Adiciona um novo filme à lista de favoritos.
 - **Corpo da Requisição:**
   
@@ -112,29 +112,29 @@
 ### Listar Favoritos
 
 - **Método:** GET
-- **Endpoint:** `http://localhost:3000/api/favorites`
+- **Endpoint:** `http://localhost:3001/api/favorites`
 - **Descrição:** Obtém todos os favoritos cadastrados.
 
 ### Obter Favorito por ID
 
 - **Método:** GET
-- **Endpoint:** `http://localhost:3000/api/favorites/:id`
+- **Endpoint:** `http://localhost:3001/api/favorites/:id`
 - **Descrição:** Obtém um favorito específico pelo ID.
 
 ### Excluir Favorito
 
 - **Método:** DELETE
-- **Endpoint:** `http://localhost:3000/api/favorites/:id`
+- **Endpoint:** `http://localhost:3001/api/favorites/:id`
 - **Descrição:** Exclui um favorito específico pelo ID.
 
 ### Atualizar Favorito
 
 - **Método:** PUT
-- **Endpoint:** `http://localhost:3000/api/favorites/:id`
+- **Endpoint:** `http://localhost:3001/api/favorites/:id`
 - **Descrição:** Atualiza os dados de um favorito específico pelo ID.
 
 ### Listar Favoritos de um Usuário
 
 - **Método:** GET
-- **Endpoint:** `http://localhost:3000/api/favorites/user/:userId`
+- **Endpoint:** `http://localhost:3001/api/favorites/user/:userId`
 - **Descrição:** Obtém todos os favoritos de um usuário específico pelo ID do usuário.
